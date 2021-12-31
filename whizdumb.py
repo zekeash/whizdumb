@@ -1,7 +1,7 @@
 # zeke ash
 # whiz-dumb of crowds
 # based on wits and wagers
-
+# https://www.ultraboardgames.com/wits-and-wagers/game-rules.php
 # questions taken from https://meebily.com/wits-wagers-questions-game-ideas
 
 # getpass will hide people's answers in run in terminal
@@ -13,15 +13,9 @@ import random
 # replace this with whereever you are keeping these files:
 # os.chdir("/Users/zekeash/Desktop/intro to comp sci")
 
-inputsecret = input  # use this to run in IDLE
-# inputsecret = getpass.getpass  # use this to run in terminal with no echo
-# inputsecret = pwinput.pwinput  # use this to run in terminal with *'s instead of numbers
-
-# create questions:
 f = open("rules.txt", "r")
 content = f.read()
 f.close()
-
 
 class Player:
     def __init__(self, playername, points=2):
@@ -59,7 +53,10 @@ class Question:
     def getResponses(self, playerList):
         responses = []
         for player in playerList:
-            guess = eval(inputsecret(player.playername + ", enter your guess: "))
+            guess = inputsecret(player.playername+", enter your guess: ")
+            while not guess.isnumeric():
+                guess = inputsecret("sorry, please enter only a number (decimals ok but no spaces, commas, units, etc): ")
+            guess = eval(guess)
             responses.append((player, guess))
         return (responses)
 
@@ -109,11 +106,16 @@ class Question:
             for tup in bettingTable:
                 if answer_to_bet == tup[0]:
                     chosenAnswer = tup[-1]
-            howMuch = eval(input("how much would you like to bet on answer {}? you have {} points. "
-                                 .format(chosenAnswer, player.points)))
+            howMuch = input("how much would you like to bet on answer {}? you have {} points. "
+                                 .format(chosenAnswer,player.points))
+            while not howMuch.isnumeric():
+                howMuch = input("sorry, please enter an amount you would like to bet: ")
+            howMuch = eval(howMuch)
             while howMuch > player.points:
-                howMuch = eval(input("sorry, you may not bet more than what you have. please enter your bet: "))
-            # bet = player.placeBet(howMuch,chosenAnswer,int(tup[1][0]))
+                howMuch = input("sorry, you may not bet more than what you have. please enter your bet: ")
+                while not howMuch.isnumeric():
+                    howMuch = input("sorry, please enter an amount you would like to bet: ")
+                howMuch=eval(howMuch)
             bet = player.placeBet(howMuch, chosenAnswer, int(bettingTable[ord(answer_to_bet) - 97][1][0]))
             betList.append(bet)
             if player.points > 0:
@@ -128,11 +130,16 @@ class Question:
                     for tup in bettingTable:
                         if second_answer_to_bet == tup[0]:
                             chosenAnswer = tup[-1]
-                    second_howMuch = eval(input("you have {} points. how much would you like to bet on answer {}? "
-                                                .format(player.points, chosenAnswer)))
+                    second_howMuch = input("you have {} points. how much would you like to bet on answer {}? "
+                                                .format(player.points,chosenAnswer))
+                    while not second_howMuch.isnumeric():
+                        second_howMuch = input("sorry, please enter an amount you would like to bet: ")
+                    second_howMuch = eval(second_howMuch)
                     while second_howMuch > player.points:
-                        second_howMuch = eval(
-                            input("sorry, you may not bet more than what you have. please enter your bet: "))
+                        second_howMuch = eval(input("sorry, you may not bet more than what you have. please enter your bet: "))
+                        while not howMuch.isnumeric():
+                            howMuch = input("sorry, please enter an amount you would like to bet: ")
+                        howMuch=eval(howMuch)
                     bet = player.placeBet(howMuch, chosenAnswer,
                                           int(bettingTable[ord(second_answer_to_bet) - 97][1][0]))
                     betList.append(bet)
@@ -208,6 +215,15 @@ def main():
         if player.points == max(scoreboard):
             winner = "the winner is {} with {} points! thanks for playing!".format(player.playername, player.points)
     print(winner)
+
+
+terminalMasking = input("Can your terminal mask input? (For example, IDLE cannot.) ")
+if terminalMasking == 'yes' or terminalMasking == 'y':
+    inputsecret = pwinput.pwinput   # Masks input with *'s
+    # inputsecret = getpass.getpass # Alternative: input does not appear at all
+else:
+    inputsecret = input
+
 
 # comment this out if you do not want it to run automatically
 if __name__=="__main__":

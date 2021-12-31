@@ -1,0 +1,64 @@
+# Description of game play
+# Pose question
+# Gather response from each contestant
+# Present responses in order with odds and respondent 
+# Take one or more bets from each contestant
+# Present answer and payoff bets (adjust scores)
+
+# Pose question
+    # draw question from question bank
+    # print question
+
+# Gather response from each contestant
+    # check that response is a number
+    # store response and respondent
+
+# Present responses in order with odds and respondent
+
+# Take one or more bets from each contestant
+    # Choose a response and an amount
+    # Check that amount is feasible (less than current score)
+
+# Present answer, announce winner(s) and payoff all bets (adjust scores)
+    # Restore to 2 points if less than 2 points.
+
+#class Bets:    
+
+
+#class Board()/ def main():
+    # create player list
+        # playerList is a list, each item in it is a Player object
+    # question, responses, bets
+    # Draw a question from question bank and present question
+        # read out a txt file of Qs and As
+        # "card" needs to hold current question and answer
+        # print question
+    # Accept response from each player
+        # cycle through players, get numeric answer
+            # read through playerList, prompt each player for answer
+        # store as player,answer
+            # maybe keep as tuple?
+    # Process all response
+        # add "player" who makes the "lower than all given" guess
+        # add "player"/"answer" who makes the exactly correct answer
+        # double duplicates
+        # store as (answer, players who gave answer)
+        # rank the answers numerically
+            # use sort function
+        # mark winning answer (answer/person that is either tied with correct answer OR closest below)
+    # Present responses and odds
+        # attach odds to ranked answers
+        # print all answers except the exactly correct one
+        # label answers (probably ABCD etc.)
+    # Accept bet from each player
+        # cycle through players
+        # collect bets from each player
+            # a bet is a player,answer,amount
+            # prompt answer, amount for each player
+            # check that they have the money
+    # announce winner
+        # answer __ given by ___ was closest to correct
+    # Adjudicate bets
+        # report who wins what amount
+        # credit their accounts
+        # return accounts to 2 if below 2

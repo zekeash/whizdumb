@@ -1,3 +1,8 @@
+We have reached the third degree where we devote our intelligences to
+anticipating what average opinion expects the average opinion to
+be. And there are some, I believe, who practice the fourth, fifth and
+higher degrees (John Maynard Keynes, General Theory of Employment,
+Interest and Money, 1936).
 
 Whizdumb is based on the board game Wits and Wagers, which leverages
 the wisdom of crowds to find answers to numeric questions.  The wisdom
@@ -19,8 +24,11 @@ In the betting phase, you can place up to two bets on the answers that
 you and the other players have given. You start with two tokens. You
 can bet these tokens on the answer that you gave, the answer that
 another player gave, or on the option that every answer given is
-greater than the true answer. Betting on the right answer will give you more points,  which you can use to make your bets more valuable in later rounds.
-If you have less than 2 points at the end of each round, your point total will be returned to 2, so there is no need to worry about being eliminated.
+greater than the true answer. Betting on the right answer will give
+you more points, which you can use to make your bets more valuable in
+later rounds.  If you have less than 2 points at the end of each
+round, your point total will be returned to 2, so there is no need to
+worry about being eliminated.
 
 After all bets are in, the correct answer is revealed. The winning bet is
 the value that is *closest without being greater* than the correct
